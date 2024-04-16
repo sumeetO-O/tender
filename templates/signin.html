@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="./style.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway:400,200'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
+    <title>Home Page</title>
+    <style>
+        h1 {
+        text-align: center;
+        font-size: 35px;
+        }
+        .search {
+        width: 100%;
+        position: relative;
+        display: flex;
+        }
+        .searchTerm {
+        width: 100%;
+        border: 3px solid #00b4cc;
+        border-right: none;
+        padding: 5px;
+        height: 20px;
+        border-radius: 5px 0 0 5px;
+        outline: none;
+        color: #9dbfaf;
+        }
+
+        .searchTerm:focus {
+        color: #00b4cc;
+        }
+
+        .searchButton {
+        width: 40px;
+        height: 36px;
+        border: 1px solid #00b4cc;
+        background: #00b4cc;
+        text-align: center;
+        color: #fff;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        font-size: 20px;
+        }
+        .wrap {
+        width: 30%;
+        position: absolute;
+        top: 15%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        }
+        #sec {
+        font-family: "Raleway", sans-serif;
+        padding: 50px 0;
+        background: #fff;
+        text-align: center;
+        word-wrap: break-word;
+        }
+        #sec ul {
+        margin: 0;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        list-style: none;
+        }
+        #sec ul li {
+        padding: 40px;
+        width: 250px;
+        transition: box-shadow 0.3s;
+        }
+        #sec ul li:hover {
+        box-shadow: 0 12px 15px 0 rgba(25, 133, 48, 0.24),
+            0 17px 50px 0 rgba(14, 212, 103, 0.19);
+        }
+        #sec ul li:hover span {
+        color: #e6961e;
+        }
+        #sec ul li:hover p {
+        color: #555;
+        }
+        #sec ul li:hover h3 {
+        color: #e6862d;
+        }
+        #sec ul li:hover h3:after {
+        width: 25px;
+        }
+        #sec ul li span {
+        font-size: 2.6em;
+        display: block;
+        transition: color 0.3s;
+        color: #58544f;
+        }
+        #sec ul li span:before,
+        #sec ul li span:after {
+        position: static;
+        }
+        #sec ul li h3 {
+        color: #181717;
+        display: inline-block;
+        font-size: 24px;
+        font-weight: 100;
+        transition: color 0.3s;
+        }
+        #sec ul li h3:after {
+        content: "";
+        position: relative;
+        left: 50%;
+        top: 20px;
+        transform: translateX(-50%);
+        display: block;
+        width: 40px;
+        height: 1px;
+        background: #04b370;
+        transition: width 0.3s;
+        }
+        #sec ul li p {
+        color: #a2a2a2;
+        text-align: left;
+        text-indent: 1em;
+        font-size: 16px;
+        line-height: 26px;
+        transition: color 0.3s;
+        }
+
+    </style>
+</head>
+<body>
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    </div>
+    {% endfor %}
+
+    <h3>Welcome to {{ login_as }} Panel!</h3>
+
+    {% if user.is_authenticated %}
+    <h3>Hello {{username}}!</h3>
+    <h4>You're successfully logged in.</h4>
+    <button type="submit"><a href="/signout">SignOut</a></button>
+    <button type="submit"><a href="blogpost-like/">GO ON</a></button>
+    {% else %}
+    <button type="submit"><a href="/signup">SignUp</a></button>
+    <br/>
+    <br/>
+    <button type="submit"><a href="/signin">SignIn</a></button>
+    {% endif %}
+
+    <h1>Bidder's Profile</h1>
+    <div class="wrap">
+        <div class="search">
+           <input type="text" class="searchTerm" placeholder="Search">
+           <button type="submit" class="searchButton">
+             <i class="fa fa-search"></i>
+          </button>
+        </div>
+     </div>
+    <section id="sec">
+        <ul>
+          <li>
+            <span class="fa fa-newspaper-o"></span>
+            <h3>Search Active Tenders</h3>
+          </li>
+          <li>
+            <span class="fa fa-newspaper-o"></span>
+            <h3>Tender Status</h3>
+          </li>
+          <li>
+            <span class="fa fa-newspaper-o"></span>
+            <h3>My Tenders</h3>
+          </li>
+        </ul>
+        <ul>
+            <li>
+              <span class="fa fa-newspaper-o"></span>
+              <h3>Archived Clarifications</h3>
+            </li>
+            <li>
+              <span class="fa fa-newspaper-o"></span>
+              <h3>Bid Opening Live</h3>
+            </li>
+            <li>
+              <span class="fa fa-newspaper-o"></span>
+              <h3>My Bids</h3>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <span class="fa fa-newspaper-o"></span>
+              <h3>Upload Documents</h3>
+            </li>
+            <li>
+              <span class="fa fa-newspaper-o"></span>
+              <h3>Associated OEMs</h3>
+            </li>
+          </ul>
+      </section>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>

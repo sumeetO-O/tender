@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@400;500&family=Roboto+Condensed&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=devanagari,latin-ext');
+
+        :root {
+            --white: #ffffff;
+            --light: #f0eff3;
+            --black: #000000;
+            --dark-blue: #1f2029;
+            --dark-light: #353746;
+            --red: #da2c4d;
+            --yellow: #f8ab37;
+            --grey: #ecedf3;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        html {
+            height: 100%;
+            background: radial-gradient(circle, rgba(60,73,72,1) 0%, rgba(14,49,77,1) 100%);
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+            font-size: 15px;
+            line-height: 1.7;
+            color: #0E314D;
+            overflow-x: hidden;
+            -webkit-transition: all 300ms linear;
+	        transition: all 300ms linear; 
+        }
+        .banner {
+            position: fixed;
+            width: 35%;
+            height: 100%;
+            left: 4%;
+            background-color: #ffd521;
+            z-index: -99999;
+            display: grid;
+            align-items: center;
+        }
+        .avtar {
+            content: url("https://quintagroup.com/services/service-images/e-procurement.png/@@images/image.png");
+            max-width: 100%;
+            height: 32em;
+            border-radius: 5px;
+            margin-left: 10%;
+            margin-top: 100px;
+        }
+
+        .form {
+            width: 50%;
+            position: absolute;
+            top: -2%;
+            right: 0;
+            margin-right: 2.5em;
+            margin-left: 1em;
+            z-index: 99999999;
+        }
+        
+        /* Code outer------------------------------------------------------- */
+
+        a {
+            cursor: pointer;
+            transition: all 200ms linear;
+        }
+        a:hover {
+            text-decoration: none;
+        }
+        .link {
+        color: #0E314D;
+        }
+        .link:hover {
+        color: #E77901;
+        }
+        p {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 1.7;
+        }
+        h4 {
+        font-weight: 600;
+        }
+        h6 span{
+        padding: 0 20px;
+        text-transform: uppercase;
+        font-weight: 700;
+        }
+        .full-height{
+        min-height: 100vh;
+        }
+        [type="checkbox"]:checked,
+        [type="checkbox"]:not(:checked){
+        position: absolute;
+        left: -9999px;
+        }
+        .checkbox:checked + label,
+        .checkbox:not(:checked) + label{
+        position: relative;
+        display: block;
+        text-align: center;
+        width: 60px;
+        height: 16px;
+        border-radius: 8px;
+        padding: 0;
+        margin: 10px auto;
+        cursor: pointer;
+        background-color: #ffeba7;
+        }
+        .checkbox:checked + label:before,
+        .checkbox:not(:checked) + label:before{
+        position: absolute;
+        display: block;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        color: #ffeba7;
+        background-color: #102770;
+        font-family: 'unicons';
+        content: '\eb4f';
+        z-index: 20;
+        top: -10px;
+        left: -10px;
+        line-height: 36px;
+        text-align: center;
+        font-size: 24px;
+        transition: all 0.5s ease;
+        }
+        .checkbox:checked + label:before {
+        transform: translateX(44px) rotate(-270deg);
+        }
+
+
+        .card-3d-wrap {
+        position: relative;
+        width: 440px;
+        max-width: 100%;
+        height: 520px;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        perspective: 800px;
+        margin-top: 60px;
+        }
+
+        .card-3d-wrapper {
+        width: 100%;
+        height: 100%;
+        position:absolute;    
+        top: 0;
+        left: 0;  
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        transition: all 600ms ease-out; 
+        }
+        .card-front, .card-back {
+        width: 100%;
+        height: 100%;
+        background-color: #FFD521;
+        background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
+        background-position: bottom center;
+        background-repeat: no-repeat;
+        background-size: 300%;
+        position: absolute;
+        border-radius: 6px;
+        left: 0;
+        top: 0;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -o-backface-visibility: hidden;
+        backface-visibility: hidden;
+        }
+        .card-back {
+        transform: rotateY(180deg);
+        }
+        .checkbox:checked ~ .card-3d-wrap .card-3d-wrapper {
+        transform: rotateY(180deg);
+        }
+        .center-wrap{
+        position: absolute;
+        width: 100%;
+        padding: 0 35px;
+        top: 50%;
+        left: 0;
+        transform: translate3d(0, -50%, 35px) perspective(100px);
+        z-index: 20;
+        display: block;
+        }
+
+
+        .form-group{ 
+        position: relative;
+        display: block;
+            margin: 0;
+            padding: 0;
+        }
+        .form-style {
+        padding: 13px 20px;
+        padding-left: 55px;
+        height: 48px;
+        width: 100%;
+        font-weight: 500;
+        border-radius: 4px;
+        font-size: 14px;
+        line-height: 22px;
+        letter-spacing: 0.5px;
+        outline: none;
+        color: #fff;
+        background-color: #E77901;
+        border: none;
+        -webkit-transition: all 200ms linear;
+        transition: all 200ms linear;
+        box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
+        }
+        .form-style:focus,
+        .form-style:active {
+        border: none;
+        outline: none;
+        box-shadow: 0 4px 8px 0 rgba(21,21,21,.2);
+        }
+        .input-icon {
+        position: absolute;
+        top: 0;
+        left: 18px;
+        height: 48px;
+        font-size: 24px;
+        line-height: 48px;
+        text-align: left;
+        color: #ffeba7;
+        -webkit-transition: all 200ms linear;
+            transition: all 200ms linear;
+        }
+
+        .form-group input:-ms-input-placeholder  {
+        color: #fff;
+        opacity: 0.7;
+        -webkit-transition: all 200ms linear;
+            transition: all 200ms linear;
+        }
+        .form-group input::-moz-placeholder  {
+        color: #fff;
+        opacity: 0.7;
+        -webkit-transition: all 200ms linear;
+            transition: all 200ms linear;
+        }
+        .form-group input:-moz-placeholder  {
+        color: #fff;
+        opacity: 0.7;
+        -webkit-transition: all 200ms linear;
+            transition: all 200ms linear;
+        }
+        .form-group input::-webkit-input-placeholder  {
+        color: #fff;
+        opacity: 0.7;
+        -webkit-transition: all 200ms linear;
+            transition: all 200ms linear;
+        }
+        .form-group input:focus:-ms-input-placeholder  {
+        opacity: 0;
+        -webkit-transition: all 200ms linear;
+            transition: all 200ms linear;
+        }
+        .form-group input:focus::-moz-placeholder  {
+        opacity: 0;
+        -webkit-transition: all 200ms linear;
+            transition: all 200ms linear;
+        }
+        .form-group input:focus:-moz-placeholder  {
+        opacity: 0;
+        -webkit-transition: all 200ms linear;
+            transition: all 200ms linear;
+        }
+        .form-group input:focus::-webkit-input-placeholder  {
+        opacity: 0;
+        -webkit-transition: all 200ms linear;
+            transition: all 200ms linear;
+        }
+
+        .btn{  
+        border-radius: 4px;
+        height: 44px;
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase;
+        -webkit-transition : all 200ms linear;
+        transition: all 200ms linear;
+        padding: 0 30px;
+        letter-spacing: 1px;
+        display: -webkit-inline-flex;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+        -webkit-align-items: center;
+        -moz-align-items: center;
+        -ms-align-items: center;
+        align-items: center;
+        -webkit-justify-content: center;
+        -moz-justify-content: center;
+        -ms-justify-content: center;
+        justify-content: center;
+        -ms-flex-pack: center;
+        text-align: center;
+        border: none;
+        background-color: #ffeba7;
+        color: #102770;
+        box-shadow: 0 8px 24px 0 rgba(255,235,167,.2);
+        }
+        .btn:active,
+        .btn:focus{  
+        background-color: #102770;
+        color: #ffeba7;
+        box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
+        }
+        .btn:hover{  
+        background-color: #102770;
+        color: #ffeba7;
+        box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
+        }
+
+
+        /* checkboxes--------------- */
+
+
+        [type="radio"]:checked,
+        [type="radio"]:not(:checked){
+            position: absolute;
+            left: -9999px;
+            width: 0;
+            height: 0;
+            visibility: hidden;
+        }
+
+
+        .checkbox-tools:checked + label,
+        .checkbox-tools:not(:checked) + label{
+            position: relative;
+            display: inline-block;
+            padding: 20px;
+            width: 110px;
+            font-size: 14px;
+            line-height: 20px;
+            letter-spacing: 1px;
+            margin: 0 auto;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: 10px;
+            text-align: center;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+            text-transform: uppercase;
+            color: var(--white);
+            -webkit-transition: all 300ms linear;
+            transition: all 300ms linear; 
+        }
+        .checkbox-tools:not(:checked) + label{
+            background-color: var(--dark-light);
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+        }
+        .checkbox-tools:checked + label{
+            background-color: transparent;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+        .checkbox-tools:not(:checked) + label:hover{
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+        .checkbox-tools:checked + label::before,
+        .checkbox-tools:not(:checked) + label::before{
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 4px;
+            background-image: linear-gradient(298deg, var(--red), var(--yellow));
+            z-index: -1;
+        }
+        .checkbox-tools:checked + label .uil,
+        .checkbox-tools:not(:checked) + label .uil{
+            font-size: 24px;
+            line-height: 24px;
+            display: block;
+            padding-bottom: 10px;
+        }
+        .pb-5, .py-5 {
+            padding-bottom: 2rem!important;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="avtar"></div>
+    </div>
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert"">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    {% endfor %}
+
+    <div class="form">
+        <div class="container">
+            <div class="row full-height justify-content-center">
+                <div class="col-12 text-center align-self-center py-5" style="padding-bottom: 0rem!important; overflow: hidden;">
+                    <div class="section pb-5 pt-5 pt-sm-2 text-center">
+                        <h6 class="mb-0 pb-3" style="color: #FFD521;"><span>Log In </span><span>Sign Up</span></h6>
+                        <input class="checkbox" type="checkbox" id="reg-log" name="reg-log"/>
+                        <label for="reg-log"></label>
+                        <div class="card-3d-wrap mx-auto">
+                            <div class="card-3d-wrapper">
+                                <div class="card-front">
+                                    <div class="center-wrap">
+                                        <div class="section text-center">
+                                            <h4 class="mb-4 pb-3">Log In AS</h4>
+                                            <form id="log_in" method="POST" action="/signin/">
+                                            {% csrf_token %}
+                                                <div class="form-group">
+                                                    <input type="text" name="username" class="form-style" placeholder="Username" id="logemail" autocomplete="off">
+                                                    <i class="input-icon uil uil-at"></i>
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off">
+                                                    <i class="input-icon uil uil-lock-alt"></i>
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    
+
+
+                                                    <div class="col-12 pb-5" style="display: flex; top: 40px;">
+                                                        <input class="checkbox-tools" type="radio" name="log_as" id="tool-1" value="tenderer" checked>
+                                                        <label class="for-checkbox-tools" for="tool-1">
+                                                            <i class="uil uil-money-insert"></i>
+                                                            TENDERER
+                                                        </label><!--
+                                                        --><input class="checkbox-tools" type="radio" name="log_as" id="tool-2" value="bidder">
+                                                        <label class="for-checkbox-tools" for="tool-2">
+                                                            <i class="uil uil-anchor"></i>
+                                                            BIDDER
+                                                        </label><!--
+                                                        --><input class="checkbox-tools" type="radio" name="log_as" id="tool-3" value="oem">
+                                                        <label class="for-checkbox-tools" for="tool-3">
+                                                            <i class="uil uil-object-group"></i>
+                                                            OEM
+                                                        </label>
+                                                    </div>
+                                                    
+
+
+                                                </div>
+                                                <input type="submit" class="btn mt-4" value="SUBMIT"></input>
+                                                <p class="mb-0 mt-4 text-center"><a href="#0" class="link">Forgot your password?</a></p>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-back">
+                                    <div class="center-wrap">
+                                        <div class="section text-center">
+                                            <h4 class="mb-4 pb-3">Register AS</h4>
+                                            <form id="sign_up" method="POST" action="/user/">
+                                                {% csrf_token %}
+                                                <div class="form-group">
+                                                    <input type="text" name="logname" class="form-style" placeholder="Your Full Name" id="logname" autocomplete="off">
+                                                    <i class="input-icon uil uil-user"></i>
+                                                </div>	
+                                                <div class="form-group mt-2">
+                                                    <input type="email" name="logemail" class="form-style" placeholder="Your Email" id="logemail" autocomplete="off">
+                                                    <i class="input-icon uil uil-at"></i>
+                                                </div>	
+                                                <div class="form-group mt-2">
+                                                    <input type="password" name="logpass" class="form-style" placeholder="Your Password" id="logpass" autocomplete="off">
+                                                    <i class="input-icon uil uil-lock-alt"></i>
+                                                </div>
+                                                
+
+                                                <div class="form-group mt-2">
+                                                    
+
+
+                                                    <div class="col-12 pb-5" style="display: flex; top: 40px;">
+                                                        <input class="checkbox-tools" type="radio" name="log_as" id="tool-1s" value="tenderer" checked>
+                                                        <label class="for-checkbox-tools" for="tool-1s">
+                                                            <i class="uil uil-money-insert"></i>
+                                                            TENDERER
+                                                        </label><!--
+                                                        --><input class="checkbox-tools" type="radio" name="log_as" id="tool-2s" value="bidder">
+                                                        <label class="for-checkbox-tools" for="tool-2s">
+                                                            <i class="uil uil-anchor"></i>
+                                                            BIDDER
+                                                        </label><!--
+                                                        --><input class="checkbox-tools" type="radio" name="log_as" id="tool-3s" value="oem">
+                                                        <label class="for-checkbox-tools" for="tool-3s">
+                                                            <i class="uil uil-object-group"></i>
+                                                            OEM
+                                                        </label>
+                                                    </div>
+                                                    
+
+
+                                                </div>
+                                                <input type="submit" class="btn mt-4" value="SUBMIT"></input>
+
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

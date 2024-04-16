@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tender_Portal</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,200" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@400;500&family=Roboto+Condensed&display=swap');
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: 'Roboto Condensed', sans-serif;;
+            padding: 10px;
+            background: #f1f1f1;
+        }
+
+        /* Header/Blog Title */
+        .header {
+            padding: 30px;
+            text-align: center;
+            background: white;
+        }
+
+        .header h1 {
+            font-size: 50px;
+        }
+
+        /* Style the top navigation bar */
+        .topnav {
+            overflow: hidden;
+            box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+            border-radius: 5px;
+            height: 3.5rem;
+            display: grid;
+            grid-auto-flow: column;
+            align-items: center;
+            padding: 0 20px 0 20px;
+        }
+        #wrapper {
+            width: 50%;
+        }
+        h1 {
+            text-align: center;
+            font-size: 35px;
+            }
+            .search {
+            width: 100%;
+            position: relative;
+            display: flex;
+            }
+            .searchTerm {
+            width: 100%;
+            border: 3px solid #00b4cc;
+            border-right: none;
+            padding: 5px;
+            height: 20px;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+            color: #9dbfaf;
+            }
+
+            .searchTerm:focus {
+            color: #00b4cc;
+            }
+
+            .searchButton {
+            width: 40px;
+            height: 36px;
+            border: 1px solid #00b4cc;
+            background: #00b4cc;
+            text-align: center;
+            color: #fff;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-size: 20px;
+            }
+            .wrap {
+            width: 30%;
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            }
+            #sec {
+            font-family: "Raleway", sans-serif;
+            padding: 50px 0;
+            background: #fff;
+            text-align: center;
+            word-wrap: break-word;
+            }
+            #sec ul {
+            margin: 0;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            list-style: none;
+            }
+            #sec ul li {
+            padding: 40px;
+            width: 250px;
+            transition: box-shadow 0.3s;
+            }
+            #sec ul li:hover {
+            box-shadow: 0 12px 15px 0 rgba(25, 133, 48, 0.24),
+                0 17px 50px 0 rgba(14, 212, 103, 0.19);
+            }
+            #sec ul li:hover span {
+            color: #e6961e;
+            }
+            #sec ul li:hover p {
+            color: #555;
+            }
+            #sec ul li:hover h3 {
+            color: #e6862d;
+            }
+            #sec ul li:hover h3:after {
+            width: 25px;
+            }
+            #sec ul li span {
+            font-size: 2.6em;
+            display: block;
+            transition: color 0.3s;
+            color: #58544f;
+            }
+            #sec ul li span:before,
+            #sec ul li span:after {
+            position: static;
+            }
+            #sec ul li h3 {
+            color: #181717;
+            display: inline-block;
+            font-size: 24px;
+            font-weight: 100;
+            transition: color 0.3s;
+            }
+            #sec ul li h3:after {
+            content: "";
+            position: relative;
+            left: 50%;
+            top: 20px;
+            transform: translateX(-50%);
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: #04b370;
+            transition: width 0.3s;
+            }
+            #sec ul li p {
+            color: #a2a2a2;
+            text-align: left;
+            text-indent: 1em;
+            font-size: 16px;
+            line-height: 26px;
+            transition: color 0.3s;
+            }
+
+
+        .logo {
+            width: 2.3rem;
+            height: 2.3rem;
+            border-radius: 50%;
+            background-image: url('https://png.pngtree.com/png-vector/20210129/ourmid/pngtree-the-national-flag-of-india-png-image_2845292.jpg');
+            cursor: pointer;
+            background-position: center center;
+            background-size: 4rem;
+            transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        }
+        .logo:hover {
+            transform: scale(1.2) rotate(360deg);
+        }
+        .title {
+            position: absolute;
+            justify-self: center;
+            font-family: 'Lilita One', cursive;
+            font-size: 1.5rem;
+            color: #202f3d;
+            cursor: default;
+        }
+        .sign_btn {
+            width: 7rem;
+            height: 30px;
+            background: #3498DB;
+            justify-self: end;
+            cursor: pointer;
+            border: 3.4px solid #2980B9;
+            border-radius: 5px;
+            box-sizing: unset;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Nunito', sans-serif;
+            transition: all 0.2s ease-in-out;
+        }
+        .sign_btn p {
+            color: white;
+            font-weight: bolder;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+        .sign_btn:hover {
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        }
+        #add_tender {
+            position: fixed;
+            bottom: 2em;
+            right: 2em;
+            border-radius: 100px;
+            padding: 18px;
+            padding-left: 14px;
+        }
+        body {
+            margin: 8%;
+            border: 10px double black;
+            background-color: rgb(248, 188, 109);
+            padding: 5%;
+            font-size: 20px;
+            background-image: url("bgg.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 35px;
+            margin-top: 0%;
+            padding-top: 5px;
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-size: 25px;
+            padding-bottom: 10px;
+        }
+
+        input,
+        #dropdown {
+            margin-left: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        #submit {
+            padding: 10px;
+            background-color: rgb(7, 80, 19);
+            color: bisque;
+            font-size: 18px;
+            border-radius: 5px;
+            box-shadow: 5px 5px 3px rgb(10, 133, 57), -5px -5px 3px rgb(16, 112, 53);
+        }
+
+        #submit:hover {
+            background-color: bisque;
+            color: rgb(16, 116, 54);
+        }
+
+        a:link,
+        a:visited {
+            background-color: #126129;
+            color: bisque;
+            padding: 10px;
+            text-align: center;
+            border:3px solid black;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 5px 5px 3px rgb(10, 133, 57), -5px -5px 3px rgb(16, 112, 53);
+        }
+        a:hover{
+            background-color: bisque;
+            color: rgb(16, 116, 54);
+        }
+    </style>
+</head>
+<body>
+    {% include "navbar.html" %}
+    <button id="add_tender" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"><i class="uil uil-plus"></i>Add Tender</button>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"><b>Tender Creation Process</b></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form method="POST" action="">
+            {% csrf_token %}
+            {{form}}
+            <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Tender Refrence Number:</label>
+                <input type="text" class="form-control" id="recipient-name">
+            </div>
+            <div class="form-group">
+                <label for="message-text" class="col-form-label">Tender Name:</label>
+                <input class="form-control" id="message-text"></input>
+            </div>
+            <div class="form-group">
+                <label for="message-text" class="col-form-label">Tender Name:</label>
+                <input class="form-control" id="message-text"></input>
+            </div>
+            <div class="form-group">
+                <label for="message-text" class="col-form-label">Tender Name:</label>
+                <input class="form-control" id="message-text"></input>
+            </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button id="submit" type="button" class="btn btn-primary">Send message</button>
+        </div>
+        </div>
+    </div>
+    </div>
+    <h1>Basic Details</h1><br>
+    <form id="fm" action="" method="">
+        <label for="refno">Tender Reference Number</label>
+        <input type="text" id="refno" name="refno" /><br />
+        <label for="ten_type">Tender Type</label>
+        <select name="ten_type" id="ten_type" style="font-size: 20px;">
+            <option value="Auction">Auction</option>
+            <option value="EOI">EOI</option>
+            <option value="Limited">Limited</option>
+            <option value="Open">Open</option>
+            <option value="Open for H1 price">Open for H1 price</option>
+            <option value="Single">Single</option>
+            <option value="Test">Test</option>
+        </select>
+        <br /><br />
+        <label for="form">Form of contract</label>
+        <select name="form" id="form" style="font-size: 20px;">
+            <option value="Turn-key">Turn-key</option>
+            <option value="Piece-work">Piece-work</option>
+            <option value="Lump-sum">Lump-sum</option>
+            <option value="Multi-stage">Multi-stage</option>
+            <option value="Percentage">Percentage</option>
+            <option value="Supply">Supply</option>
+            <option value="Item Rate">Item Rate</option>
+            <option value="Fixed-Rate">Fixed-Rate</option>
+        </select>
+        <br /><br />
+        <label for="num">No of Cover(s)</label>
+        <select name="num" id="num" style="font-size: 20px;">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        <br /><br />
+        <label for="category">Tender Category</label>
+        <select name="category" id="category" style="font-size: 20px;">
+            <option value="Goods">Goods</option>
+            <option value="Goods without TPS">Goods without TPS</option>
+            <option value="Services">Services</option>
+            <option value="Works">Works</option>
+        </select><br /><br />
+        <label for="acc_type">Account Type Head</label>
+        <select name="acc_type" id="acc_type" style="font-size: 20px;">
+            <option value="State Government Funded">State Government Funded</option>
+            <option value="Central Government Funded">Central Government Funded</option>
+            <option value="Others">Others</option>
+        </select><br /><br />
+        <label for="no_bid">No of Bid openers</label>
+        <select name="no_bid" id="no_bid" style="font-size: 20px;">
+            <option value="2 of 2">2 of 2</option>
+            <option value="2 of 3">2 of 3</option>
+            <option value="3 of 3">3 of 3</option>
+            <option value="2 of 4">2 of 4</option>
+        </select><br /><br />
+        <p>Should allow Re-bid Submission</p>
+        <input type="radio" id="yes" name="re-bid" value="Yes" />
+          <label for="yes" style="color: black;">Yes</label>  
+        <input type="radio" id="no" name="re-bid" value="No" />  
+        <label for="no" style="color: black;">No</label><br />
+        <p>Should allow Withdrawal of bids</p>
+        <input type="radio" id="yes" name="withdraw" value="Yes" />
+          <label for="yes" style="color: black;">Yes</label>  
+        <input type="radio" id="no" name="withdraw" value="No" />  
+        <label for="no" style="color: black;">No</label><br />
+        <p>Should allow offline submission</p>
+        <input type="radio" id="yes" name="offline_submission" value="Yes" />
+          <label for="yes" style="color: black;">Yes</label>  
+        <input type="radio" id="no" name="offline_submission" value="No" />  
+        <label for="no" style="color: black;">No</label><br />
+        <p>Should allow general Technical Evaluation</p>
+        <input type="radio" id="yes" name="tech_eval" value="Yes" />
+          <label for="yes" style="color: black;">Yes</label>  
+        <input type="radio" id="no" name="tech_eval" value="No" />  
+        <label for="no" style="color: black;">No</label><br />
+        <p>Should allow Multi Currency</p>
+        <input type="checkbox" id="yes" name="multi_curr" value="Yes" />
+          <label for="yes" style="color: black;">Yes</label><br />
+        <p></p>
+        <label for="pay_mode">Payment Mode</label>
+        <select name="pay_mode" id="pay_mode" style="font-size: 20px;">
+            <optgroup label="Offline">
+                <option value="DD">DD</option>
+                <option value="BG">BG</option>
+                <option value="SS">SS</option>
+                <option value="BC">BC</option>
+            </optgroup>
+            <optgroup label="Online">
+                <option value="UPI">UPI</option>
+                <option value="Netbanking">Netbanking</option>
+            </optgroup>
+        </select><br>
+        <input type="button" id="submit" value="Cancel" /><br>
+        <a href="cover_details.html" >Next</a>
+    </form>
+    {% if user.get_username == "sweet" %}
+        <h2>Congrts!u did it</h2>
+    {% endif %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

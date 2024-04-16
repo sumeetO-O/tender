@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tender_Detail</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@400;500&family=Roboto+Condensed&display=swap');
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: 'Roboto Condensed', sans-serif;;
+            padding: 10px;
+            padding-top: 30px;
+            padding-left: 2em;
+            background: #f1f1f1;
+        }
+        h1 {
+            font-weight: bold;
+        }
+        h2 {
+            padding: 10px 0 10px 0;
+            font-size: 25px;
+            font-weight: bolder;
+            margin-top: 1em;
+        }
+        table {
+            margin-top: 1em;
+            font-size: 17px;
+        }
+
+        /* CSS */
+        .button-8 {
+            background-color: #e1ecf4;
+            border-radius: 3px;
+            border: 1px solid #7aa7c7;
+            box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+            box-sizing: border-box;
+            color: #39739d;
+            cursor: pointer;
+            display: inline-block;
+            font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 1.15385;
+            margin: 0;
+            outline: none;
+            padding: 8px .8em;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: baseline;
+            white-space: nowrap;
+        }
+
+        .button-8:hover,
+        .button-8:focus {
+            background-color: #b3d3ea;
+            color: #2c5777;
+        }
+
+        .button-8:focus {
+            box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+        }
+
+        .button-8:active {
+            background-color: #a0c7e4;
+            box-shadow: none;
+            color: #2c5777;
+        }
+        .button-8:disabled {
+            cursor: unset;
+            background-color: #e48d8d;
+            color: #ffffffab;
+            border: 1px solid #c77a7a;
+            box-shadow: 0 0 0 4px rgb(255 0 0 / 15%);
+        }
+    </style>
+</head>
+<body>
+    <h1 id="demo">Indian Institute of Science Education and Research - Kolkata</h1>
+    <h2>OEM's Registered</h2>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Rating</th>
+            <th scope="col">Country/Region</th>
+            <th scope="col">Interest</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          {% for OEM in OEMS %}
+          <tr>
+            <th scope="row">{{OEM.id}}</th>
+            <td>{{OEM.name}}</td>
+            <td>{{OEM.rating}}</td>
+            <td>{{OEM.region}}</td>
+            <td><button class="button-8" role="button" onclick="fetch('/notify/{{OEM.id}}')" type="button">I am Interested</button></td>
+          </tr>
+          {% endfor %}
+
+        </tbody>
+      </table>
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+      <script>
+        var btn = document.getElementsByTagName('button');
+        for (let i = 0; i<(btn.length); i++) {
+            btn[i].addEventListener("click", function() {
+                btn[i].disabled = "True";
+                btn[i].innerHTML = "Notified ✅";
+            });
+        }
+      </script>
+</body>
+</html>

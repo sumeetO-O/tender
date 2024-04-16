@@ -1,0 +1,9 @@
+<div class="topnav">
+    <div class="logo"></div>
+    <h1 class="title">E-procurement</h1>
+    {% if user.is_authenticated %}
+    <a href="/signout" style="position: absolute; right: 25px; text-decoration: none;"><div style="background: #D30000; border-color: red;" class="sign_btn"><p>SignOut</p></div></a>
+    {% else %}
+    <a href="register/" style="position: absolute; right: 25px; text-decoration: none;"><div class="sign_btn"><p>Login</p></div></a>
+    {% endif %}
+</div>
